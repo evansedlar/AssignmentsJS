@@ -1,0 +1,110 @@
+@media (min-width: 320px) and (max-width: 480px) {
+
+}
+
+
+body {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+
+}
+
+li label {
+    margin-right: 10px;
+}
+
+li {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+    display: flex;
+    justify-content: space-between;
+}
+
+#taskNameTextBox {
+    padding: 8px 12px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    width: 70%;
+    font-size: 18px;
+}
+
+#addTaskButton {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    margin-left: 10px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: #fff;
+    font-size: 18px;
+  }
+
+#completedTaskUL {
+    background-color: #e6ffe6;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+#pendingTaskUL {
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+li input[type="checkbox"] {
+    margin-right: 10px;
+    cursor: pointer;
+}
+  
+li input[type="text"] {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    font-size: 16px;
+    width: 70%;
+    padding: 5px 10px;
+}
+  
+li input[type="text"]:focus {
+    outline: none;
+    border-bottom: 1px solid #4CAF50;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.list {
+    margin: 0 auto;
+    max-width: 600px;
+    font-family: Arial, sans-serif;
+}
+
+.searchBar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .list {
+      max-width: 750px;
+    }
+}
+  
+@media (min-width: 992px) {
+    .list {
+      max-width: 960px;
+    }
+}
+  
+ 
+@media (min-width: 1200px) {
+    .list {
+      max-width: 1140px;
+    }
+}
