@@ -47,6 +47,7 @@ li span {
     li span {
         margin-bottom: 5px;
 }
+}
 
 @media (min-width: 601px) and (max-width: 1024px) {
     h1 {
@@ -85,3 +86,5 @@ li span {
         margin-right: 20px;
     }
 }
+
+
