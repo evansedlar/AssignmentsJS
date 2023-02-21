@@ -557,3 +557,18 @@
 
 // console.log(sumNumbers)
 
+//////////////////////////////////////////////////////////////////////////////////////////
+
+//Week 3 Day 2 Activity 1
+
+// let firstNameTextBox = document.getElementById('firstNameTextBox')
+// let lastNameTextBox = document.getElementById('lastNameTextBox')
+// let submitButton = document.getElementById('submitButton')
+
+// submitButton.addEventListener('click', function() {
+
+// })
+
+
+//////////////////////////////////////////////////////////////////////////////////
+
