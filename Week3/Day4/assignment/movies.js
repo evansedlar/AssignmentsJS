@@ -31,7 +31,7 @@ function addMovies() {
         Year: `${yearTextBox.value}`,
         Poster: `${posterTextBox.value}`
     }
-    movies.unshift(newMovie)
+    movies.unshift(newMovie) //adds to the front of the list
 
     displayMovies()
 }

@@ -1,0 +1,52 @@
+#movieList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+  }
+  
+  #movieList a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  #movieList li {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 20px;
+  }
+  
+  #movieList img {
+    display: block;
+    margin: 0 auto;
+    border: 2px solid black;
+  }
+  
+  /* Style the movie description */
+  #movieDescription {
+    margin: 20px auto;
+    text-align: center;
+  }
+  
+  #movieDescription h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+  
+  #movieDescription img {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid black;
+  }
+  
+  #movieDescription ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  #movieDescription li {
+    font-size: 20px;
+    margin-top: 10px;
+  }
