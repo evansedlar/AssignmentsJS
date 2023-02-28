@@ -1,0 +1,67 @@
+/* Apply a dark background color to the body */
+body {
+    background-color: #222;
+    color: #fff;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Center the sections */
+  section {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  /* Style the input fields and buttons */
+  input[type="text"], button {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    margin-right: 10px;
+  }
+  
+  input[type="text"] {
+    background-color: #444;
+    color: #fff;
+  }
+  
+  button {
+    background-color: #f39c12;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  button:hover {
+    background-color: #e67e22;
+  }
+  
+  /* Style the lists */
+  ul {
+    list-style-type: none;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 10px;
+  }
+  
+  li {
+    margin-bottom: 10px;
+  }
+  
+  /* Style the selected email list */
+  #selectedEmail {
+    display: none;
+  }
+  
+  #selectedEmail li {
+    margin-bottom: 0;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 20px;
+  }
