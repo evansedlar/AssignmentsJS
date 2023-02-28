@@ -1,11 +1,10 @@
-/* Apply a dark background color to the body */
+
 body {
     background-color: #222;
     color: #fff;
     font-family: Arial, sans-serif;
   }
-  
-  /* Center the sections */
+
   section {
     max-width: 500px;
     margin: 0 auto;
@@ -15,7 +14,6 @@ body {
     margin-bottom: 20px;
   }
   
-  /* Style the input fields and buttons */
   input[type="text"], button {
     padding: 10px;
     font-size: 16px;
@@ -54,7 +52,6 @@ body {
     margin-bottom: 10px;
   }
   
-  /* Style the selected email list */
   #selectedEmail {
     display: none;
   }
