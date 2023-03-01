@@ -41,46 +41,44 @@ request.send()
 
 
 
+//////////////////////////////////////////////////////////////////////////
+
+
+
+// const titleTextBox = document.getElementById('titleTextBox')
+// const priceTextBox = document.getElementById('priceTextBox')
+// const descriptionTextBox = document.getElementById('descriptionTextBox')
+// const categoryIdTextBox = document.getElementById('categoryIdTextBox')
+// const imageTextBox = document.getElementById('imageTextBox')
+// const saveProductButton = document.getElementById('saveProductButton')
+
+// saveProductButton.addEventListener('click', () => {
+
+//     const request = new XMLHttpRequest()
+//     request.open('POST', 'https://api.escuelajs.co/api.v1/products/')
+
+//     //body/content of the request
+//     const body = {
+//         title: titleTextBox.value,
+//         price: parseFloat(priceTextBox.value),
+//         description: descriptionTextBox.value,
+//         categoryId: parseInt(categoryIdTextBox.value),
+//         images: [imageTextBox.value]
+//     }
+
+//     // telling the server to the request is of type JSON
+//     request.setRequestHeader('Content-type', 'application/json')
+
+//     request.send(body)
+
+// })
 
 
 
 
 
 
-const titleTextBox = document.getElementById('titleTextBox')
-const priceTextBox = document.getElementById('priceTextBox')
-const descriptionTextBox = document.getElementById('descriptionTextBox')
-const categoryIdTextBox = document.getElementById('categoryIdTextBox')
-const imageTextBox = document.getElementById('imageTextBox')
-const saveProductButton = document.getElementById('saveProductButton')
-
-saveProductButton.addEventListener('click', () => {
-
-    const request = new XMLHttpRequest()
-    request.open('POST', 'https://api.escuelajs.co/api.v1/products/')
-
-    //body/content of the request
-    const body = {
-        title: titleTextBox.value,
-        price: parseFloat(priceTextBox.value),
-        description: descriptionTextBox.value,
-        categoryId: parseInt(categoryIdTextBox.value),
-        images: [imageTextBox.value]
-    }
-
-    // telling the server to the request is of type JSON
-    request.setRequestHeader('Content-type', 'application/json')
-
-    request.send(body)
-
-})
-
-
-
-
-
-
-
+//////////////////////////////////////////////////////////////////////////////////////
 
 
 // const dawgList = document.getElementById("dawgList")
@@ -112,11 +110,7 @@ saveProductButton.addEventListener('click', () => {
 
 
 
-
-
-
-
-
+/////////////////////////////////////////////////////////////////////////////////
 
 
 // dawgButton.addEventListener('click', () => {
@@ -138,6 +132,88 @@ saveProductButton.addEventListener('click', () => {
 // function dislpayDogInfo(dogInfo) {
 //     dawgDisplay.setAttribute('src', dogInfo.message)
 // }
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//GET request using fetch api
+
+const stocksUL = document.getElementById('stocksUL')
+// Create a Promise
+
+let promise = new Promise(function(resolve, reject) {
+    resolve() // Promise has been fulfilled
+    // reject // Promise has been rejected
+})
+
+promise.then(() => {
+    // Resolving the promise
+}).catch((error) => {
+    //rejectiom
+})
+
+// https://endurable-bead-polo.glich.me/stocks
+
+// by default GET
+const result = fetch('https://endurable-bead-polo.glich.me/stocks')
+.then(response => response.json())
+.then(result => {
+
+    stocks.map(stock => {
+        return `<li>${stock.symbol}</li>`
+    })
+    stocksUL.innerHTML = stockItems.join('')
+
+})
+
+
+console.log(result)
+
+/////////////////////////////////////////////////////////////////////////////////
+// POST request using fetch api
+
+// adding a product to an API
+
+const addProductButton = document.getElementById('addProductButton')
+
+addProductButton.addEventListener('click', () => {
+
+    //add product
+    //https://api.escuelajs.co/api/v1/products/
+
+    const body = {
+        title: "New Product",
+        price: 10,
+        description: "A description",
+        categoryId: 1,
+        images: ["https://placeimg.com/640/480/any"]
+    }
+
+
+
+
+    fetch('https://api.escuelajs.co/api/v1/products/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+    }).then(response => response.json())
+    .then(result => {
+        console.log(result)
+    })
+})
+
+
+
+
+
+
+1
+
+
+
+
+
 
 
 

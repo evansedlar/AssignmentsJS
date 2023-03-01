@@ -2,16 +2,19 @@
 <html lang="en">
 <head></head>
 <body>
-    <input type="text" placeholder="title" id="titleTextBox"/>
-    <input type="text" placeholder="price" id="priceTextBox"/>
-    <input type="text" placeholder="description" id="descriptionTextBox"/>
-    <input type="text" placeholder="Enter category id" id="categoryIdTextBox"/>
-    <input type="text" placeholder="Enter image URL" id="imageTextBox"/>
-    <button id="saveProductButton">Save Product</button>
+    <!-- <ul id="productsList"></ul> -->
+    <input type="text" placeholder="Enter email" id="inputEmail" />
+    <input type="text" placeholder="Enter type" id="inputType" />
 
+    <select id="inputSize">
+        <option value="Small">Small</option>
+        <option value="Medium">Medium</option>
+        <option value="Large">Large</option>
+    </select>
 
-
-
+    <input type="text" placeholder="Enter price" id="inputPrice" />
+    <button id="submitButton">Submit Order</button>
+    <ul id="coffeeOrders"></ul>
 
 
     <script src="activity.js"></script>
