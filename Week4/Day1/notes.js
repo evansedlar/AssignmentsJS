@@ -203,17 +203,77 @@ addProductButton.addEventListener('click', () => {
     })
 })
 
+//////////////////////////////////////////////////////////////////////////////////
+// async/await
+
+
+const foodDisplay = document.getElementById("foodDisplay")
+
+
+async function fetchProducts() {
+
+        //await can only be used inside async functions
+    const response = await fetch("https://api.escuelajs.co/api/v1/products")
+    const products = await response.json()
+  
+
+    const productItems = products.map(product => {
+        return `<li>${product.title}</li>`
+    })
+    foodDisplay.innerHTML = productItems.join('')
+}
+
+fetchProducts()
+
+
+/////////////////////////////////////////////////////////////////////////////////
+
+/* Software Development Principles (https://github.com/azamsharp/web-ft-02-2023/blob/main/week5/day5/resources/agile.md)
+
+Waterfall
+Agile (Scrum, Unit Testing, Pair Programming, Code Reviews, Continuous Deployment, Sprint)
+
+Sprints: Developers are working 2-3 weeks to produce something useful.
+
+Stories
+Login Screen (13)
+Registration Screen (8)
+User should be allowed to add stories (13)
+User should be allowed to delete stories (8)
+User should be allowed to add grocery items to a store (13)
+User should be allowed to delte grocery items to a store (8)
+
+Points: 1, 2, 3, 4, 5, 6
+Points = complexity
+
+After 2 weeks (Delivered)
+
+Login Screen (13)
+Registration Screen (8)
+User should be able to add Stories (13)
+User should be able to delete stories (8)
+
+
+Velocity = 13 + 8 + 13 + 8 = 42 + 38 + 46 / 3 = 40 Average Velocity
+
+*/
+
+////////////////////////////////////////////////////////////////////////////////////
+
+/* Git Hub Branches (https://www.youtube.com/watch?v=Kc1L-TQjZZY&list=PLDMXqpbtInQiSpxYyd8AxmJCVE7equijT)
+    -git branch (default: main/master)
+
+
+Create a new branch called login_ui based on the main branch and checkout/jump
+on the login_ui branch
+    -git checkout -b login_ui main
+
+use "checkout" to jumpt between branches
+    -git checkout main  (will jump from the login_ui to the main branch)
 
 
 
-
-
-1
-
-
-
-
-
+*/
 
 
 
