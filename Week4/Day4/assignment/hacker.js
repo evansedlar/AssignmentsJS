@@ -17,7 +17,7 @@ async function fetchStories (storyID) {
     const date = new Date(stories.time * 1000)
     const story = `
         <h1>${stories.title}</h1>
-        <a href="${stories.url}"><div>${stories.url}</div></a>
+        <a href="${stories.url}">${stories.url}</a>
         <li>By: ${stories.by}</li>
         <li>Published: ${date.toLocaleDateString("en-US")}</li>
     `
