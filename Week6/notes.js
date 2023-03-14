@@ -1,11 +1,11 @@
 
 //import express
-const express = require('express')
+// const express = require('express')
 //app is a function that contains all the required functions that we need
-const app = express()
+// const app = express()
 
 //Tell express how to parse JSON requests
-app.use(express.json())
+// app.use(express.json())
 
 //localhost: 8080
 
@@ -23,9 +23,9 @@ app.use(express.json())
 
 //startthe server
 // your port number can be different but 8080 is common
-app.listen(8080, () => {
-    console.log('Server is Running')
-})
+// app.listen(8080, () => {
+//     console.log('Server is Running')
+// })
 
 // app.get('/my-name', (req, res) => {
 //     res.send('Evan Sedlar')
@@ -115,18 +115,49 @@ app.listen(8080, () => {
 
 //TODO list Web API using node
 
-const toDo = []
+// const toDo = []
 
 //get all todo items
-app.get("/toDos", (req, res) => {
-    const title = req.body.title
-    const priority = req.body.priority
-    const date = req.body.date
-    const todoItem = {title: tit ,priority: pri ,date: date}
-    toDo.push
-})
+// app.get("/toDos", (req, res) => {
+//     const title = req.body.title
+//     const priority = req.body.priority
+//     const date = req.body.date
+//     const todoItem = {title: tit ,priority: pri ,date: date}
+//     toDo.push
+// })
 
 //save a new todo item
-app.post("/toDos", (req, res) => {
+// app.post("/toDos", (req, res) => {
 
+// })
+
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+//Server side pages means that your server will return the completed page.
+
+const express = require('express')
+const app = express()
+const mustacheExpress = require('mustache-express')
+
+// setting up mustache as a templating engine
+app.engine('mustache', mustacheExpress())
+
+// the pages are located in the views directory
+app.set("views", "./views")
+
+// extension for all the pages
+app.set('view engine', 'mustache')
+
+app.get('/', (req, res) => {
+    res.render('index')
 })
+
+app.listen(8080, () => {
+    console.log('Server is Running')
+})
+
+
+
+
+

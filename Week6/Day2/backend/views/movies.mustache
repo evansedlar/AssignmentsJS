@@ -1,0 +1,15 @@
+
+<h1>Movies</h1>
+
+<ul>
+    <!-- Start of the loop -->
+    {{#allMovies}}
+
+        <li>
+        <!-- name of the object's property inside the array -->
+        {{ name }} <b>{{ year }}</b>
+        </li>
+
+    {{/allMovies}}
+    <!-- end of the loop -->
+</ul>
