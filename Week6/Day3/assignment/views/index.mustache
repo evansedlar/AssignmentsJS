@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>All Movies</h1>
+    <a href="/movies/create">Click here to add a movie.</a>
+    <a href="/movies">Click here to show all Movies</a>
+    <br>
+    <section>
+        {{#arr}}
+        <form method="PGET" action="/movies/genre/{{genreFilter}}">
+            <select>
+                <option value="Action">Action</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Romance">Romance</option>
+                <option value="Horror">Horror</option>
+                <option value="Drama">Drama</option>
+            </select>
+            <button>Filter</button>
+        </form>
+        
+        <form action="/movies/delete" method="POST">
+            <div class="movieCard">
+                <h1>{{title}}</h1>
+                <p>{{description}}</p>
+                <p>{{genre}}</p>
+                <img src="{{posterURL}}">
+                <input type="hidden" value="{{id}}" name="id">
+                <button>Delete</button>
+            </div>
+        </form>
+        <form action="/movies/{{id}}" method="POST">
+            <button>Show Details</button>
+        </form>
+        {{/arr}}
+    </section>
+
+
+
+
+
+</body>
+</html>

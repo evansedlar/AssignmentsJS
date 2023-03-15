@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Movie to List</title>
+</head>
+<body>
+    <h1>Add Movie</h1>
+    <form method="post" action="/movies/create">
+        <input type="text" placeholder="title" name="title">
+        <input type="text" placeholder="description" name="description">
+        <select name="movieGenre">
+            <option value="">Select a Genre</option>
+            <option value="Action">Action</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Romance">Romance</option>
+            <option value="Horror">Horror</option>
+            <option value="Drama">Drama</option>
+        </select>
+        <input type="text" placeholder="posterURL" name="posterURL">
+        <button>Submit</button>
+    </form>
+
+    <a href="/movies">Click here to view all movies</a>
+</body>
+</html>

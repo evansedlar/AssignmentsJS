@@ -13,7 +13,8 @@ let trips = [{
     title: 'New Orleans',
     image: 'https://www.shutterstock.com/image-vector/flag-new-orleans-louisiana-usa-260nw-2114310374.jpg',
     departure: '2023-03-10',
-    arrive: '2023-03-14'
+    arrive: '2023-03-14',
+    tripId: 1
 }]
 
 app.get('/', (req, res) => {
@@ -22,6 +23,13 @@ app.get('/', (req, res) => {
 
 app.get('/addTrip', (req, res) => {
     res.render('add')
+})
+
+app.post('delete-trip', (req,res) => {
+    // get the trip id from the body
+    const tripId = req.body.tripId
+    //delete the trip from trips array with the same tripId
+    trips = trips.filter( trip => trip.tripId != tripId)
 })
 
 app.post('/addTrip', (req, res) => {
@@ -34,7 +42,8 @@ app.post('/addTrip', (req, res) => {
         title: title,
         image: image,
         departure: departure,
-        arrive: arrive
+        arrive: arrive,
+        tripId: trips.length + 1
     }
 
     trips.push(tripInfo)

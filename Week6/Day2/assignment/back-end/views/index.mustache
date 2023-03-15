@@ -8,12 +8,13 @@
 <body>
     <a href="http://localhost:8080/addTrip">Click here to add a Trip</a>
     {{#tripsObj}}
-        <div>
+        <form method= "POST" action="/delete-trip">
         <h1><b>{{title}}</b></h1>
         <img src="{{image}}" max-width='20rem'>
         <li>Departure Date: {{departure}}</li>
         <li>Return Date: {{arrive}}</li>
-        </div>
+        <button>Remove</button>
+        </form>
     {{/tripsObj}}
     
 </body>
