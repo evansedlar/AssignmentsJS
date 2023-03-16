@@ -136,30 +136,81 @@
 
 //Server side pages means that your server will return the completed page.
 
-const express = require('express')
-const app = express()
-const mustacheExpress = require('mustache-express')
+// const express = require('express')
+// const app = express()
+// const mustacheExpress = require('mustache-express')
 
 // setting up mustache as a templating engine
-app.engine('mustache', mustacheExpress())
+// app.engine('mustache', mustacheExpress())
 
 // the pages are located in the views directory
-app.set("views", "./views")
+// app.set("views", "./views")
 
 // extension for all the pages
-app.set('view engine', 'mustache')
+// app.set('view engine', 'mustache')
 
-app.get('/', (req, res) => {
-    res.render('index')
-})
+// app.get('/', (req, res) => {
+//     res.render('index')
+// })
 
-app.listen(8080, () => {
-    console.log('Server is Running')
-})
+// app.listen(8080, () => {
+//     console.log('Server is Running')
+// })
 
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
+//SESSIONS
 
+// install session "npm install express-session"
 
+const session = require('express-session')
+
+let users = [{username: 'johndoe', password: 'password'},{username: 'marydoe', password: 'password'}]
+
+//session middleware
+// do not put sensitive information in session
+// this includes password, cc, ssn, passport, bank account information.
+app.use(session({
+    secret: 'THISCANBEANYTHING',
+    saveUninitialized: false,
+}))
+
+app.post('/login', (req, res) => {
+
+    const username = req.body.username
+    const password = req.body.password
+        //find function is going to return a single object
+    const user = users.find(user => user.username = username && user.password == password)
+
+    if(user) {
+        // we can put something in the session
+        if(req.session) {
+            req.session.username = username
+        }
+        res.render('dashboard')
+    } else {
+        // username or password is incorrect
+        res.render('login', {errorMessage: "username or password is incorrect"})
+    }
+
+})
+
+app.get('/login', (req, res) => {
+    res.render('login')
+})
+
+app.get('/page1', (req, res) => {
+    //if session is initialized
+    if(req.session) {
+        req.session.catName= 'My Cat Name'
+    }
+    res.render('index')
+})
+
+app.get('/page2', (req, res) => {
+
+    console.log(req.session.catName)
+    res.render('index')
+})
 

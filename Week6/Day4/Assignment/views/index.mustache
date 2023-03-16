@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+</head>
+<body>
+    <h1>All Trips</h1>
+    <a href="/addTrip">Click here to add a trip.</a>
+    {{#arr}}
+        <form action="/deleteTrip" method="POST">
+            <section>
+                <h1>{{title}}<h1>
+                <img src="{{image}}"/>
+                <li>{{departure}}</li>
+                <li>{{arrive}}</li>
+                <input type="hidden" value={{tripId}} name="tripId" />
+                <button>Delete</button>
+            </section>
+        </form>
+    {{/arr}}
+    <br>
+    <a href="/login">Click here to Log out.</a>
+</body>
+</html>
