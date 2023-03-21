@@ -8,34 +8,46 @@
 </head>
 <body>
     <h1>Blog List</h1>
+    <b>Signed in as: {{user}}.</b>
+    <form action="/sign-out" method="POST">
+        <button>Sign Out</button>
+    </form>
     <a href="/add-post">Click here to add a post</a>
+    <form action="filter-posts" method="POST">
+        <button>View your Posts</button>
+    </form>
+    <form action="/index" method="GET">
+        <button>View all Posts</button>
+    </form>
     <ul>
-        Signed in as: {{user}}.
         {{#blog}}
             <form method='POST' action="/delete-post">
                 <h3>{{title}}</h3><p>Written By: {{author}}</p>
                 <li>{{body}}</li>
-                <i><p>Date Created:</p>{{date_created}}</i>
-                <i><p>Date Updated:</p>{{date_updated}}</i>
                 <input type = 'hidden' name='id' value={{id}} />
                 <button>Delete</button>
                 <div>--------------------------------------------</div>
             </form>
+
+            <form action="/post-details" method="POST">
+                <button>View Post Details</button>
+                <input type="hidden" name="id" value={{id}}>
+            </form>
+
             <form method="POST" action="/update-post">
                 <button>Update Post</button>
                 <input type="hidden" name='id' value={{id}}>
             </form>
+
+            <form action="/add-comment" method="POST">
+                <input type="text" placeholder="enter comment" name="comment">
+                <input type="hidden" name="post_id" value={{id}}>
+                <button>Add Comment</button>
+            </form>
+
         {{/blog}}
     </ul>
-    <form action="/index" method="GET">
-        <button>View all Posts</button>
-    </form>
-    <form action="/my-posts" method="POST">
-        <button>View my Posts</button>
-    </form>
-    <form action="/sign-out" method="POST">
-        <button>Sign Out</button>
-    </form>
+
 
 
 
