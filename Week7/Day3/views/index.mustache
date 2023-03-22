@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<h1>Posts</h1>
+<form action="/index">
+    <button>View All Posts</button>
+</form>
+<form action="/add-post">
+    <button>Add a post</button>
+</form>
+<form action="/filter" method="POST">
+    <button>Filter by Category</button>
+    <select name="category">
+        <option value="JavaScript">JavaScript</option>
+        <option value="Python">Python</option>
+    </select>
+</form>
+    {{#posts}}
+    <form action="/delete-post" method="POST">
+        <div>
+            <p><b>{{title}}</b></p>
+            <p>{{body}}</p>
+            <p>Category: <i>{{category}}</i></p>
+            <input type="hidden" name="id" value={{id}} />
+        </div>
+        <button>Delete</button>
+    </form>
+
+    <form method="POST" action="/update-post">
+        <input type="hidden" name="id" value={{id}} />
+        <button>Update Post</button>
+    </form>
+    <div>----------------------------------------------------------------</div>
+    {{/posts}}
+
+
+
+
+
+</body>
+</html>

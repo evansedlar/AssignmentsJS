@@ -56,3 +56,9 @@ var bcryptjs = require('bcryptjs')
 
 // How to get all movies added by a user
 // SELECT id, name, year, user_id FROM users WHERE user_id = 2
+
+
+//Active record pattern, ORM, TABLES
+let customers = new Customer()
+customers.first_name = 'John'
+customers.save()
