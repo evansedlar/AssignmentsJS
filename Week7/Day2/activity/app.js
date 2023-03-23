@@ -61,7 +61,19 @@ app.post('/delete-movie', async (req, res) => {
 //find one movie by id
 app.get('/movies/:movieId', async (req, res) => {
     const movieId = parseInt(req.params.moiveId)
-    let movie = models.Movie.findByPk(movieId)
+
+    const movie = await models.Movie.findByPk(movieId, {
+        include: [
+            {
+                model: models.Review,
+                as: 'reviews'
+            }
+        ]
+    })
+
+
+
+    // let movie = models.Movie.findByPk(movieId)
     res.render('index', {movie})
 })
 
@@ -81,7 +93,45 @@ app.get('/movies/genre/:genre', async (req, res) => {
 
 })
 
-//in the case you have forgotten to add a colunn to your table 
+//see all reviews
+app.get('/reviews', async (req, res) => {
+
+    const reviews = await models.Review.findAll({})
+    res.render('reviews')
+
+})
+
+//adding review
+app.post('/add-review', async (req, res) => {
+
+    const title = req.body.title
+    const body = req.body.body
+    const movieId = parseInt(req.body.movieId)
+
+    const review = models.Review.build({
+        title: title, 
+        body: body,
+        movie_id: movieId
+    })
+
+    const _ = await review.save()
+    res.redirect('/')
+
+})
+
+//to create a belongs to relationship (ex: a review belongs to a movie or a comment belongs to a post)
+//go to the reviews model and edit the associate section
+//models.Review.belongsTo()
+
+//in order define association and relationships (ex: Movies and Reviews, Posts and Comments)
+// you must go into the respective models file and edit the associate section
+//models.Movie.hasMany(models.Review, { as: 'reviews', foreignKey: 'movie_id'})
+
+//sequelize model:create --name Review --attributes 'title:string body:string movie_id:integer' 
+//in order to make the movie_id have foreign key (FK) constraints you must edit the migration
+//under movie_id add 'references: { model: 'Movies', field:'id' }'
+
+//in the case you have forgotten to add a column to your table 
 //sequelize migration:create --name 'adding-director-name-column-to-movies.js'
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`)

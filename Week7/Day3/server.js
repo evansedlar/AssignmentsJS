@@ -17,7 +17,14 @@ app.use(session({
 
 //View all posts
 app.get('/index', async(req, res) => {
-    const posts = await models.Post.findAll({})
+    const posts = await models.Post.findAll({
+        include: [
+            {
+                model: models.Comment,
+                as: 'comments'
+            }
+        ]
+    })
     res.render('index', {posts: posts})
 })
 
@@ -106,6 +113,29 @@ app.post('/filter', async (req, res) => {
 })
 
 
+//add a comment
+app.post('/add-comment', async (req, res) => {
+    const newComment = models.Comment.build({
+        title: req.body.commentTitle,
+        body: req.body.commentBody,
+        post_id: parseInt(req.body.post_id)
+    })
+
+    await newComment.save()
+    res.redirect('/index')
+})
+
+//Delete a comment
+app.post("/delete-comment", async (req, res) => {
+    const id = parseInt(req.body.commentId)
+    const deletedComment = await models.Comment.destroy({
+        where: {
+            id: id
+        }
+    })
+    res.redirect('/index')
+})
+
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`)
+    console.log(`Server is running on http://localhost:${PORT}/index`)
 })
