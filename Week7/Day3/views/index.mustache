@@ -8,12 +8,20 @@
 </head>
 <body>
 <h1>Posts</h1>
+
+<form action="/searchBar" method="POST">
+    <input type="text" placeholder="Search by Title" name="searchBar"/>
+    <button>Search</button>
+</form>
+
 <form action="/index">
     <button>View All Posts</button>
 </form>
+
 <form action="/add-post">
     <button>Add a post</button>
 </form>
+
 <form action="/filter" method="POST">
     <button>Filter by Category</button>
     <select name="category">
@@ -21,6 +29,15 @@
         <option value="Python">Python</option>
     </select>
 </form>
+
+<form action="/filterDate" method="POST">
+        <button>Sort by Date</button>
+    <select name='filterDate'>
+        <option value="recent">Newest to Oldest</option>
+        <option value="oldest">Oldest to Newest</option>
+    </select>
+</form>
+
     {{#posts}}
     <form action="/delete-post" method="POST">
         <div>
@@ -31,17 +48,23 @@
         </div>
         <button>Delete</button>
     </form>
+
     <br>
+
     <form method="POST" action="/update-post">
         <input type="hidden" name="id" value={{id}} />
         <button>Update Post</button>
     </form>
+
     <br>
+
     <form action="/post-details" method="GET">
         <button>View Post Details</button>
         <input type="hidden" name="id" value={{id}} />
     </form>
+
     <br>
+
     <div>Add a comment.</div>
     <form method="POST" action="/add-comment">
         <input type="text" name="commentTitle" placeholder="Enter Title" />

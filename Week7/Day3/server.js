@@ -9,6 +9,7 @@ app.set('views', './views')
 app.set('view engine', 'mustache')
 app.use(express.urlencoded())
 const PORT = 8080
+const { Op } = require('sequelize')
 
 app.use(session({
     secret: 'THISCANBEANYTHING',
@@ -123,6 +124,52 @@ app.post('/add-comment', async (req, res) => {
 
     await newComment.save()
     res.redirect('/index')
+})
+
+//Sort the posts
+app.post("/filterDate", async (req, res) => {
+    if (req.body.filterDate === "recent") {
+      const posts = await models.Post.findAll({
+        include: {
+          model: models.Comment,
+          as: "comments",
+        },
+        order: [["createdAt", "DESC"]],
+      });
+      res.render("index", {
+        posts: posts,
+        user: req.session.user,
+      });
+    }
+  
+    if (req.body.filterDate === "oldest") {
+      const posts = await models.Post.findAll({
+        include: {
+          model: models.Comment,
+          as: "comments",
+        },
+        order: [["createdAt", "ASC"]],
+      });
+      res.render("index", {
+        posts: posts,
+        user: req.session.user,
+      });
+    }
+  });
+
+//Search bar
+app.post('/searchBar', async (req, res) => {
+    const query = req.body.searchBar
+    const posts = await models.Post.findAll({
+        where: {
+            [Op.or]: [
+                {title: {[Op.iLike]: `%${query}%`}},
+                {body: {[Op.iLike]: `%${query}%`}}
+            ]
+        },
+        include: [{model: models.Comment, as: 'comments'}]
+    })
+    res.render('index', {posts})
 })
 
 //Delete a comment
