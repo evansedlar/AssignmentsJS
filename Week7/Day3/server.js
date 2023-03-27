@@ -10,11 +10,33 @@ app.set('view engine', 'mustache')
 app.use(express.urlencoded())
 const PORT = 8080
 const { Op } = require('sequelize')
+const http = require('http').Server(app)
+const io = require('socket.io')(http)
+app.use(express.static('js'))
 
 app.use(session({
     secret: 'THISCANBEANYTHING',
     saveUninitialized: false
 }))
+
+//Chat Room
+let chatMessages = []
+
+app.get('/chat', (req, res) => {
+    res.sendFile(__dirname + '/chat.html')
+})
+
+io.on('connection', (socket) => {
+    console.log('User Connected')
+    // const count = io.engine.clientsCount
+    io.emit('coolChat-Joined', chatMessages)
+
+    socket.on('coolChat', (chat) => {
+        chatMessages.push(chat)
+        io.emit('coolChat', chat)
+    })
+})
+
 
 //View all posts
 app.get('/index', async(req, res) => {
@@ -183,6 +205,6 @@ app.post("/delete-comment", async (req, res) => {
     res.redirect('/index')
 })
 
-app.listen(PORT, () => {
+http.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}/index`)
 })

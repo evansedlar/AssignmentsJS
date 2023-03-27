@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Chat</h1>
+
+    <form action="/index">
+        <button>View All Posts</button>
+    </form>
+
+    <h2 id="userCount"></h2>
+    
+    <input type="text" placeholder="Username" id = "usernameTextBox" />
+    <input type="text" placeholder="Message" id = "chat" />
+    <button id = "sendButton">Send</button>
+    
+
+    <ul id="chatDisplay">
+
+    </ul>
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        //initializing the socket.io client side
+        let socket = io() //this line connects the client to the server
+    </script>
+    <script src="client.js"></script>
+</body>
+
+</html>
