@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Update Task</h1>
+
+
+    <form action="/update-info" method="POST">
+        <input type="text" name="title" value="{{title}}">
+        <input type="text" name="priority" value="{{priority}}">
+        <input type="hidden" name="taskId" value={{_id}}>
+        <i>Date Completed: </i><input type="date" name="completedDate" >
+        <button>Submit</button>
+    </form>
+
+
+
+
+
+
+</body>
+</html>
