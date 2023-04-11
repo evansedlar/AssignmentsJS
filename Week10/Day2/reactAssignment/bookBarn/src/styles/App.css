@@ -1,0 +1,41 @@
+body {
+    background-color: #555;
+}
+
+.navbar {
+    display: flex;
+    background-color: #333;
+}
+
+.navbar h1 {
+    padding-left: 10px;
+    color: white;
+}
+
+.content {
+    display: flex;
+    overflow-x: scroll;
+    gap: 2rem;
+    color: #fff;
+}
+
+.content p {
+    font-style: italic;
+}
+
+img {
+    width: 200px;
+    height: 300px
+}
+
+.book {
+    padding: 10px;
+    margin: auto;
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+    font-size: 30px;
+    color: #fff;
+}
