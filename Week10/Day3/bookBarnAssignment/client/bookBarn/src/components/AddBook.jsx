@@ -1,50 +1,48 @@
-import { Component } from "react";
+import { useNavigate } from "react-router-dom"
+import { useState, useEffect } from "react"
 
+function AddBook() {
+    const navigate = useNavigate()
 
-class AddBook extends Component {
+    const[newBook, setNewBook] = useState({
+        bookTitle: "",
+        bookGenre: "",
+        bookPublisher: "",
+        bookYear: 0,
+        bookImageURL: ""
+    })
 
-    constructor() {
-        super()
-        this.state = {
-            bookTitle: "",
-            bookGenre: "",
-            bookPublisher: "",
-            bookYear: 0,
-            bookImageURL: "",
-        }
+    const captureInput = (e) => {
+        const { name, value } = e.target
+
+        setNewBook((prevNewBook) => ({
+            ...prevNewBook,
+            [name]: value,
+        }))
     }
 
-    input = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
-    }
-    
-    addBook = async () => {
+    const addBook = async () => {
         const response = await fetch('http://localhost:8080/api/add-book', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(this.state)
+            body: JSON.stringify(newBook)
         })
-        const result = await response.json()
-        console.log(result)
+        navigate('/')
     }
 
-    render() {
-        return(
-            <>
-                <input type="text" placeholder="title" name="bookTitle" onChange={this.input}/>
-                <input type="text" placeholder="genre" name="bookGenre" onChange={this.input}/>
-                <input type="text" placeholder="publisher" name="bookPublisher" onChange={this.input}/>
-                <input type="text" placeholder="year" name="bookYear" onChange={this.input}/>
-                <input type="text" placeholder="imageURL" name="bookImageURL" onChange={this.input}/>
-                <button onClick={this.addBook}>Add</button>
-            </>
-        )
-    }
-
+    return(
+        <>
+            <h1>Add Book</h1>
+            <input type="text" placeholder="Title" name="bookTitle" onChange={captureInput}/>
+            <input type="text" placeholder="Genre" name="bookGenre" onChange={captureInput}/>
+            <input type="text" placeholder="Publisher" name="bookPublisher" onChange={captureInput}/>
+            <input type="text" placeholder="Year" name="bookYear" onChange={captureInput}/>
+            <input type="text" placeholder="ImageURL" name="bookImageURL" onChange={captureInput}/>
+            <button onClick = { addBook }>Add Book</button>
+        </>
+    )
 }
 
 export default AddBook
