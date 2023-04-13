@@ -1,0 +1,17 @@
+
+
+
+.books-wrapper {
+    display: flex;
+    list-style-type: none;
+    text-align: center;
+}
+
+.book-image {
+    width: 200px;
+    align-items: center;
+}
+
+.book-details {
+    text-align: center;
+}
