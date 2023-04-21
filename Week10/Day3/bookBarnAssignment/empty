@@ -1,0 +1,6 @@
+when using sequelize you must do the command - sequelize init
+
+
+creating a table - sequelize model:create --name Book --attributes ' title:string isbn:string is_puiblished:boolean '
+
+send it by using the command ' sequelize db:migrate '
