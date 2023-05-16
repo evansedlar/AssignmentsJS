@@ -7,7 +7,7 @@ function App() {
 
   useEffect(() => {
     fetchBooks()
-  }, [])
+  }, [books])
 
   const fetchBooks = async () => {
     const response = await fetch('http://localhost:8080/api/books')
@@ -15,20 +15,36 @@ function App() {
     setBooks(result)
   }
 
+  const handleDeleteBook = async(bookId) => {
+    try {
+      const response = await fetch(`http://localhost:8080/api/books/${bookId}`, {
+        method: 'DELETE'
+      })
+      const deletedBook = await response.json()
+      console.log(deletedBook)
+    } catch (error) {
+      console.log(error)
+    }
+    console.log(bookId)
+  }
+
+
+
   const bookItems = books.map(book => {
-    return <li key={book._id}>
-      <b>{book.bookTitle}</b>
-      <p>{book.bookGenre}</p>
-      <p>{book.bookPublisher}</p>
-      <img src={book.bookImageURL}/>
-    </li>
+    return <ul key={book._id}>
+      <li id={book._id}>
+        <b>{book.bookTitle}</b>
+        <p>{book.bookGenre}</p>
+        <p>{book.bookPublisher}</p>
+        <img src={book.bookImageURL}/>
+        <button onClick={() => {handleDeleteBook(book._id)}}>Delete</button>
+      </li>
+    </ul>
   })
 
-  return (
-    <>
-      <ul>{bookItems}</ul>
-    </>
-  )
+  return <>
+    {bookItems}
+  </>
 }
 
 

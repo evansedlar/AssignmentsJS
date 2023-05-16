@@ -16,22 +16,36 @@ mongoose.connect('mongodb+srv://evansedlar20:ZzH7ITXoiE6e1M5a@cluster0.w3d1vde.m
 })
 
 
-app.post('/api/add-book', async (req, res) => {
-    const bookTitle = req.body.bookTitle
-    const bookGenre = req.body.bookGenre
-    const bookPublisher = req.body.bookPublisher
-    const bookYear = req.body.bookYear
-    const bookImageURL = req.body.bookImageURL
+app.delete('/api/books/:_id', async(req, res) => {
+    const id = req.params
+    try {
+        const deletedBook = await Book.findByIdAndDelete(id)
+        res.json(deletedBook)
+    } catch (error) {
+        console.error(error)
+    }
+})
 
-    const book = new Book({
-        bookTitle:bookTitle,
-        bookGenre:bookGenre,
-        bookPublisher:bookPublisher,
-        bookYear:bookYear,
-        bookImageURL:bookImageURL
-    })
-    await book.save()
-    res.json(book)
+app.post('/api/add-book', async (req, res) => {
+    try {
+        const bookTitle = req.body.bookTitle
+        const bookGenre = req.body.bookGenre
+        const bookPublisher = req.body.bookPublisher
+        const bookYear = req.body.bookYear
+        const bookImageURL = req.body.bookImageURL
+    
+        const book = new Book({
+            bookTitle:bookTitle,
+            bookGenre:bookGenre,
+            bookPublisher:bookPublisher,
+            bookYear:bookYear,
+            bookImageURL:bookImageURL
+        })
+        await book.save()
+        res.json(book)
+    } catch (error) {
+        console.log(`Error on add-book ${error}`)
+    }
 })
 
 
